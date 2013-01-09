@@ -9,7 +9,7 @@ Getting Started
 2. An AbstractApplicationService which you can inherit from and define methods on (in the form of public void When(YourCommand command)), that will handle commands.
 
 e.g.
-
+	
 	class Program
 	{
 		static void Main(string[] args)
