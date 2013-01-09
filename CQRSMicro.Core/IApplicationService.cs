@@ -8,6 +8,6 @@ namespace CQRSMicro.Core
 {
 	public interface IApplicationService
 	{
-		void Handle(ICommand command);
+		void Handle(IMessage message);
 	}
 }

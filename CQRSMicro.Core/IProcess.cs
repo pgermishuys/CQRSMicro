@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public class Event : IEvent
+	public interface IProcess
 	{
-		public Event()
-		{
-		}
+		void Handle(IEvent @event);
 	}
 }

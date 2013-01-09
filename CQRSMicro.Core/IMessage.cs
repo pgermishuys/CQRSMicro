@@ -6,5 +6,7 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public interface IMessage { }
+	public interface IMessage 
+	{
+	}
 }

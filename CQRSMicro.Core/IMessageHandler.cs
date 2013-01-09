@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-
 	public interface IMessageHandler
 	{
 		void Handle(IMessage message);

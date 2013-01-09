@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public class Event : IEvent
+	public interface IDependencyResolver
 	{
-		public Event()
-		{
-		}
+		T Get<T>();
+		object Get(Type type);
+		void Bind<Interface, Implementation>() where Implementation : Interface;
 	}
 }

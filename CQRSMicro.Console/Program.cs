@@ -1,58 +1,63 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using CQRSMicro.Console;
 using CQRSMicro.Core;
-using System;
+using Ninject;
 
-namespace CQRSMicro.Console
+namespace DDD.Console
 {
 	class Program
 	{
 		static void Main(string[] args)
 		{
-			var messageBus = new InMemoryBus("In Memory Bus");
-			AccountService accountService = new AccountService();
-			messageBus.Subscribe<CreateAccount>(accountService);
-			messageBus.PublishMessage(new CreateAccount(new AccountID()));
+			var dependencyResolver = new NinjectDependencyResolver();
+			InMemoryBus messageBus = new InMemoryBus("Memory Bus");
+			dependencyResolver.Bind<AccountApplicationService, AccountApplicationService>();
+
+			Assembly.GetExecutingAssembly().RegisterHandlers(messageBus, dependencyResolver);
+
+			messageBus.PublishMessage(new CreateAccount());
+
 			System.Console.ReadLine();
 		}
 	}
 
-	public class AccountID : IIdentity
+	public class NinjectDependencyResolver : IDependencyResolver
 	{
-		public Guid id { get; private set; }
-		public AccountID()
+		private IKernel kernel;
+		public NinjectDependencyResolver()
 		{
-			id = Guid.NewGuid();
+			kernel = new StandardKernel();
+		}
+		public T Get<T>()
+		{
+			return kernel.Get<T>();
+		}
+
+		public object Get(Type type)
+		{
+			return kernel.Get(type);
+		}
+
+		public void Bind<Interface, Implementation>() where Implementation : Interface
+		{
+			kernel.Bind<Interface>().To<Implementation>();
 		}
 	}
 
-	public class CreateAccount : Command<AccountID>
+	public class CreateAccount : Command
 	{
-		public CreateAccount(AccountID accountID)
-			: base(accountID)
-		{
-		}
-	}
-	public class ResetAccountBalance : Command<AccountID>
-	{
-		public ResetAccountBalance(AccountID accountID)
-			: base(accountID)
+		public CreateAccount()
 		{
 
 		}
 	}
-	public class AccountCreated : Event<AccountID> { }
-
-	public class AccountService : AbstractApplicationService, IMessageHandler
+	public class AccountApplicationService : AbstractApplicationService
 	{
-		public void When(CreateAccount command)
-		{
-		}
-
-		public void When(ResetAccountBalance command)
+		public void When(CreateAccount createAccount)
 		{
 		}
 	}

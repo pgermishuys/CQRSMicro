@@ -15,13 +15,9 @@ namespace CQRSMicro.Core
 			this.Name = name;
 		}
 
-		public async void PublishMessage<T>(T message) where T : IMessage
+		public void PublishMessage<T>(T message) where T : IMessage
 		{
-			var task = Task.Factory.StartNew(() =>
-			{
-				DispatchByType(message);	
-			});
-			await task;
+			DispatchByType(message);
 		}
 
 		public void Subscribe<T>(IMessageHandler handler) where T : IMessage
@@ -54,7 +50,7 @@ namespace CQRSMicro.Core
 			if (!handlerLookup.TryGetValue(type, out list)) return;
 			foreach (var handler in list)
 			{
-				handler.Handle(message);
+				Task.Factory.StartNew(() => { handler.Handle(message); });
 			}
 		}
 	}

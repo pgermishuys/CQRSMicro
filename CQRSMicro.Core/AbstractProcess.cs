@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public abstract class AbstractApplicationService : IApplicationService, IMessageHandler
+	public class AbstractProcess : IMessageHandler
 	{
 		public void Handle(IMessage message)
 		{

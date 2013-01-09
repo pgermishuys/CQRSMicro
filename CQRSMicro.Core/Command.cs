@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public class Command<TIdentity> : ICommand where TIdentity : IIdentity 
+	public class Command : ICommand
 	{
-		private IIdentity id;
-		public Command(IIdentity id)
+		public Command()
 		{
-			this.id = id;
 		}
 	}
 }
