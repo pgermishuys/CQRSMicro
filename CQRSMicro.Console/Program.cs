@@ -13,15 +13,35 @@ namespace DDD.Console
 	{
 		static void Main(string[] args)
 		{
-			var dependencyResolver = new NinjectDependencyResolver();
-			InMemoryBus messageBus = new InMemoryBus("Memory Bus");
-			dependencyResolver.Bind<AccountApplicationService, AccountApplicationService>();
-
-			Assembly.GetExecutingAssembly().RegisterHandlers(messageBus, dependencyResolver);
-
+			var messageBus = new InMemoryBus("Memory Bus");
+			var applicationService = new AccountApplicationService(messageBus);
+			var workflow = new SimpleWorkflow();
+			messageBus.Subscribe<CreateAccount>(applicationService);
+			messageBus.Subscribe<AccountCreated>(workflow);
 			messageBus.PublishMessage(new CreateAccount());
 
 			System.Console.ReadLine();
+		}
+	}
+
+	public class CreateAccount : Command { }
+	public class AccountCreated : Event { }
+	public class AccountApplicationService : AbstractApplicationService
+	{
+		private IMessageBus messageBus;
+		public AccountApplicationService(IMessageBus messageBus)
+		{
+			this.messageBus = messageBus;
+		}
+		public void When(CreateAccount command) 
+		{
+			messageBus.PublishMessage(new AccountCreated());
+		}
+	}
+	public class SimpleWorkflow : AbstractApplicationService
+	{
+		public void When(AccountCreated @event)
+		{
 		}
 	}
 
@@ -45,20 +65,6 @@ namespace DDD.Console
 		public void Bind<Interface, Implementation>() where Implementation : Interface
 		{
 			kernel.Bind<Interface>().To<Implementation>();
-		}
-	}
-
-	public class CreateAccount : Command
-	{
-		public CreateAccount()
-		{
-
-		}
-	}
-	public class AccountApplicationService : AbstractApplicationService
-	{
-		public void When(CreateAccount createAccount)
-		{
 		}
 	}
 }
