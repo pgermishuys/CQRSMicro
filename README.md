@@ -5,7 +5,7 @@ CQRSMicro Framework for Research Purposes
 
 Getting Started
 ---------------
-1. The IMessageBus provides a contract for the transport mechanism for messages. Currently there is an implementation in the form of [@abdulin's](http://abdullin.com/) InMemoryBus.
+1. The IMessageBus provides a contract for the transport mechanism for messages. Currently there is an implementation in the form of [@abdullin's](http://abdullin.com/) InMemoryBus.
 2. An AbstractApplicationService which you can inherit from and define methods on (in the form of public void When(YourCommand command)), that will handle commands.
 
 e.g.
