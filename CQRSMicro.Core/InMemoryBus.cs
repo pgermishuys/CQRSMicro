@@ -9,10 +9,8 @@ namespace CQRSMicro.Core
 	public class InMemoryBus : IMessageBus
 	{
 		private readonly Dictionary<Type, List<IMessageHandler>> handlerLookup = new Dictionary<Type, List<IMessageHandler>>();
-		public string Name { get; set; }
-		public InMemoryBus(string name)
+		public InMemoryBus()
 		{
-			this.Name = name;
 		}
 
 		public void PublishMessage<T>(T message) where T : IMessage

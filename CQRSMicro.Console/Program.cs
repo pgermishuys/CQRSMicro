@@ -13,38 +13,14 @@ namespace DDD.Console
 	{
 		static void Main(string[] args)
 		{
-			var messageBus = new InMemoryBus("Memory Bus");
-			var applicationService = new AccountApplicationService(messageBus);
-			var workflow = new SimpleWorkflow();
-			messageBus.Subscribe<CreateAccount>(applicationService);
-			messageBus.Subscribe<AccountCreated>(workflow);
-			messageBus.PublishMessage(new CreateAccount());
+			var dependencyResolver = new NinjectDependencyResolver();
+			dependencyResolver.Bind<IMessageBus, InMemoryBus>();
+			var messageBus = dependencyResolver.Get<IMessageBus>();
+			messageBus.Register(dependencyResolver, Assembly.GetExecutingAssembly());
 
 			System.Console.ReadLine();
 		}
 	}
-
-	public class CreateAccount : Command { }
-	public class AccountCreated : Event { }
-	public class AccountApplicationService : AbstractApplicationService
-	{
-		private IMessageBus messageBus;
-		public AccountApplicationService(IMessageBus messageBus)
-		{
-			this.messageBus = messageBus;
-		}
-		public void When(CreateAccount command) 
-		{
-			messageBus.PublishMessage(new AccountCreated());
-		}
-	}
-	public class SimpleWorkflow : AbstractApplicationService
-	{
-		public void When(AccountCreated @event)
-		{
-		}
-	}
-
 	public class NinjectDependencyResolver : IDependencyResolver
 	{
 		private IKernel kernel;

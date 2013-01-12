@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CQRSMicro.Core
 {
-	public static class RegistrationExtension
+	public static class MessageBusExtensions
 	{
-		public static void RegisterHandlers(this Assembly assemblyToScan, IMessageBus messageBus, IDependencyResolver dependencyResolver)
+		public static void Register(this IMessageBus messageBus, IDependencyResolver dependencyResolver, params Assembly[] assembliesToScan)
 		{
 			var subscribeMethod = messageBus.GetType().GetMethod("Subscribe");
-			var types = assemblyToScan.GetTypes().Where(x => typeof(IMessageHandler).IsAssignableFrom(x) && !x.IsInterface);
+			var types = assembliesToScan.SelectMany(assembly => assembly.GetTypes().Where(x => typeof(IMessageHandler).IsAssignableFrom(x) && !x.IsInterface));
 			foreach (var type in types)
 			{
 				var instanceOfType = dependencyResolver.Get(type);
