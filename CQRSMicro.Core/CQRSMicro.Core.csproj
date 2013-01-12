@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractApplicationService.cs" />
+    <Compile Include="AbstractDomainService.cs" />
     <Compile Include="Command.cs" />
+    <Compile Include="AbstractProcess.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="IApplicationService.cs" />
     <Compile Include="ICommand.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="IMessageBus.cs" />
     <Compile Include="IMessageHandler.cs" />
     <Compile Include="InMemoryBus.cs" />
+    <Compile Include="MessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationExtension.cs" />
   </ItemGroup>
