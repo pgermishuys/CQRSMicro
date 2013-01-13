@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CQRSMicro.Core;
 using Ninject;
+using CQRSMicro.Console.Commands;
 
 namespace DDD.Console
 {
@@ -14,9 +15,11 @@ namespace DDD.Console
 		static void Main(string[] args)
 		{
 			var dependencyResolver = new NinjectDependencyResolver();
-			dependencyResolver.Bind<IMessageBus, InMemoryBus>();
+			dependencyResolver.BindInSingletonScope<IMessageBus, InMemoryBus>();
 			var messageBus = dependencyResolver.Get<IMessageBus>();
 			messageBus.Register(dependencyResolver, Assembly.GetExecutingAssembly());
+
+			messageBus.PublishMessage(new CompleteAndSubmitOnlineApplication(new Guid(), "Luke Skywalker", "luke@skywalker.com", "I am the jedi you've been looking for", new byte[0]));
 
 			System.Console.ReadLine();
 		}
@@ -41,6 +44,10 @@ namespace DDD.Console
 		public void Bind<Interface, Implementation>() where Implementation : Interface
 		{
 			kernel.Bind<Interface>().To<Implementation>();
+		}
+		public void BindInSingletonScope<Interface, Implementation>() where Implementation : Interface
+		{
+			kernel.Bind<Interface>().To<Implementation>().InSingletonScope();
 		}
 	}
 }

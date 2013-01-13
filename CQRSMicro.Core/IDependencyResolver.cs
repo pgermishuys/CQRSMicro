@@ -11,5 +11,6 @@ namespace CQRSMicro.Core
 		T Get<T>();
 		object Get(Type type);
 		void Bind<Interface, Implementation>() where Implementation : Interface;
+		void BindInSingletonScope<Interface, Implementation>() where Implementation : Interface;
 	}
 }

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CQRSMicro.Console.Commands.CompleteAndSubmitOnlineApplication" Collapsed="true">
+    <Position X="4" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAABAAAAAgAAABAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Commands.CreatePDFFromOnlineSubmission" Collapsed="true">
+    <Position X="0.5" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAABAAAAAgAAABAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Commands.SendApplicationReceivedEmailToApplicant" Collapsed="true">
+    <Position X="4" Y="4.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Commands.AttachPDFToCurriculumVitae" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAQAAABAAAAAgAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Commands.EmailTheApplicationPackageToHumanResources" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.DomainServices.ApplicantCorrespondenceDomain" Collapsed="true">
+    <Position X="7.75" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainServices\ApplicantCorrespondenceDomain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.DomainServices.ApplicationPackageDomain" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainServices\ApplicationPackageDomain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.DomainServices.OnlineApplicationDomain" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DomainServices\OnlineApplicationDomain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Events.OnlineApplicationCompleteAndSubmitted" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAABAAAAAgAAABAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Events.PDFCreatedFromOnlineSubmission" Collapsed="true">
+    <Position X="3.75" Y="2.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAQAAABAAAAAgAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Events.ApplicationReceivedEmailSentToApplicant" Collapsed="true">
+    <Position X="3.75" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Events.CurriculumVitaeAttachedToPDF" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAgAAABAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Events.ApplicationPackageEmailedToHumanResources" Collapsed="true">
+    <Position X="0.5" Y="3" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CQRSMicro.Console.Processes.OnlineJobApplicationProcess" Collapsed="true">
+    <Position X="7.75" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Processes\OnlineJobApplicationProcess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DDD.Console.Program" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
